@@ -1,27 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <title>Sign Up</title>
 </head>
 <body>
+<form method = 'post' th:action="@{/user}">
+    <label>
+        Username:
+        <input type = 'text' name = 'username' th:value="${username}">
+    </label>
 
-    <form th:action="@{/user/add}" method="post">
-        <label><strong>Username:</strong><br>
-            <input type="text" name="username" placeholder="Enter a username" th:value="${username}"/>
-        </label><br>
-        <label><strong>Email:</strong><br>
-            <input type="text" name="email" placeholder="Enter an email address" th:value="${email}"/>
-        </label><br>
-        <label><strong>Password:</strong><br>
-            <input type="password" name="password" placeholder="Enter a password" />
-        </label><br>
-        <label><strong>Verify Password:</strong><br>
-            <input type="password" name="verify" placeholder="Verify Password" />
-        </label><hr>
-        <input type = 'submit' value = 'Submit'>
-        <p style="color: red" th:if="${password == verify}" th:text="${error}"></p>
-    </form>
+    <label>
+        Email:
+        <input type = 'email' name = 'email' th:value="${email}">
+    </label>
+
+    <label>
+        Password:
+        <input type = 'password' name = 'password'>
+    </label>
+
+    <label>
+        Verify Password:
+        <input type = 'password' name = 'verify'>
+    </label>
+
+    <p th:text="${error}"></p>
+
+    <input type = 'submit' value = 'Sign Up'>
+</form>
 
 </body>
 </html>
